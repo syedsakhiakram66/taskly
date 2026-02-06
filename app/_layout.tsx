@@ -1,11 +1,31 @@
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function Layout() {
     return (
-        <Stack>
-            <Stack.Screen name="index" options={{tite: "Shopping List"}} />
-            <Stack.Screen name="counter" options={{tite: "Counter Screen", presentation: "modal", animation: "fade_from_bottom"}} />
-            <Stack.Screen name="idea" options={{title: "My idea", presentation: "modal", animation: "fade_from_bottom"}} />
-        </Stack>
+        <Tabs>
+            <Tabs.Screen name="index" options={{
+                title: "Shopping List",
+                tabBarIcon: ({color, size}) => (
+                    <AntDesign name="shopping" size={size} color={color} />
+                )
+            }} />
+            <Tabs.Screen name="counter" options={{
+                title: "Counter",
+                headerShown: false,
+                tabBarIcon: ({color, size}) => (
+                    <MaterialCommunityIcons name="counter" size={size} color={color} />
+                )
+            }} />
+
+            <Tabs.Screen name="idea" options={{
+                title: "Idea",
+                tabBarIcon: ({color, size}) => (
+                    <FontAwesome5 name="lightbulb" size={size} color={color} />
+                )
+            }} />
+        </Tabs>
     );
 }
